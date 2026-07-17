@@ -1,0 +1,57 @@
+{
+  "name": "n8n-nodes-tinysend",
+  "version": "0.1.0",
+  "description": "n8n community node for tinysend — newsletters, subscribers, transactional email, agent mailboxes, and inbound-email triggers",
+  "keywords": [
+    "n8n-community-node-package",
+    "n8n",
+    "tinysend",
+    "email",
+    "newsletter",
+    "transactional-email",
+    "mailbox"
+  ],
+  "license": "MIT",
+  "homepage": "https://tinysend.com/developers",
+  "author": {
+    "name": "System Operator LLC",
+    "email": "hi@tinysend.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tiny-send/n8n-nodes-tinysend.git"
+  },
+  "engines": {
+    "node": ">=20.15"
+  },
+  "main": "index.js",
+  "scripts": {
+    "build": "rm -rf dist && tsc && gulp build:icons",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint nodes credentials package.json",
+    "test": "npm run typecheck && npm run build",
+    "prepublishOnly": "npm run build"
+  },
+  "files": [
+    "dist"
+  ],
+  "n8n": {
+    "n8nNodesApiVersion": 1,
+    "credentials": [
+      "dist/credentials/TinysendApi.credentials.js"
+    ],
+    "nodes": [
+      "dist/nodes/Tinysend/Tinysend.node.js",
+      "dist/nodes/TinysendTrigger/TinysendTrigger.node.js"
+    ]
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "gulp": "^5.0.0",
+    "n8n-workflow": "*",
+    "typescript": "^5.9.3"
+  },
+  "peerDependencies": {
+    "n8n-workflow": "*"
+  }
+}
